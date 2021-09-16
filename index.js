@@ -21,22 +21,10 @@ const random = (maxSecondAdded) => {
 //----------------------------------------------------------------------------------------------------
 //                                            XXXXXX
 //----------------------------------------------------------------------------------------------------
-// const asyncHandler = (fn) => (req, res, next) =>
-//   Promise.resolve(fn(req, res, next)).catch(next);
-// const startPuppeteerSession = async () => {
-//   const browser = await puppeteer.launch({
-//     headless: false,
-//     args: ["--no-sandbox"],
-//   });
-//   const page = await browser.newPage();
-//   return { browser, page };
-// };
-// const session = {};
 app.get("/next-video", async (req, res) => {
   try {
     const { automationYoutubeUrl, username, password, maxSecondAdded } =
       req.query;
-    session = await startPuppeteerSession();
     // const youtube = async (
     //   automationYoutubeUrl,
     //   username,
@@ -61,8 +49,7 @@ app.get("/next-video", async (req, res) => {
     //   args: ["--no-sandbox"],
     //   // args: ["--no-sandbox", "--disable-setuid-sandbox"],
     // });
-    const page = await session.page;
-    //   const page = await browser.newPage();
+    const page = await browser.newPage();
     //if incognito
     // const context = await browser.createIncognitoBrowserContext();
     // const page = await context.newPage();
