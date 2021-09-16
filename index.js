@@ -3,6 +3,8 @@
 const express = require("express");
 const formidable = require("express-formidable");
 // const chromium = require("chrome-aws-lambda");
+var CronJob = require("cron").CronJob;
+
 const puppeteer = require("puppeteer");
 // const locateChrome = require("locate-chrome");
 
@@ -128,7 +130,6 @@ const youtube = async (
     // await page.waitForNavigation({ waitUntil: "networkidle2" });
   }
   // browser.close();
-  // })();
 };
 //----------------------------------------------------------------------------------------------------
 //                                            XXXXXX
@@ -137,6 +138,10 @@ app.get("/next-video", async (req, res) => {
   try {
     const { automationYoutubeUrl, username, password, maxSecondAdded } =
       req.query;
+    // var job = new CronJob('* * * * * *', function() {
+    //   console.log('You will see this message every second');
+    // }, null, true, 'America/Los_Angeles');
+    // job.start();
 
     res
       .status(200)
