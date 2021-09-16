@@ -3,7 +3,7 @@
 const express = require("express");
 const formidable = require("express-formidable");
 // const chromium = require("chrome-aws-lambda");
-var CronJob = require("cron").CronJob;
+var cron = require("node-cron");
 
 const puppeteer = require("puppeteer");
 // const locateChrome = require("locate-chrome");
@@ -48,7 +48,7 @@ const youtube = async (
   //if incognito
   // const context = await browser.createIncognitoBrowserContext();
   // const page = await context.newPage();
-  await page.setDefaultNavigationTimeout(0); //
+  await page.setDefaultNavigationTimeout(0);
   await page.setDefaultTimeout(0);
   await page.goto(automationYoutubeUrl, {
     waitUntil: "load",
@@ -118,18 +118,13 @@ const youtube = async (
   //                                            XXX-Play FOREVER-XXX
   //-----------------------------------------------------------------------------------------------------
   while (true) {
-    i++; //
+    i++;
     await page.waitForTimeout(31000);
     let randomVideoTime = random(maxSecondAdded);
     console.log(randomVideoTime, i);
     await page.waitForTimeout(randomVideoTime);
     await nextButton[0].click();
-    // if (stopButton) {
-    //   break;
-    // }
-    // await page.waitForNavigation({ waitUntil: "networkidle2" });
   }
-  // browser.close();
 };
 //----------------------------------------------------------------------------------------------------
 //                                            XXXXXX
@@ -138,16 +133,16 @@ app.get("/next-video", async (req, res) => {
   try {
     const { automationYoutubeUrl, username, password, maxSecondAdded } =
       req.query;
-    // var job = new CronJob('* * * * * *', function() {
-    //   console.log('You will see this message every second');
-    // }, null, true, 'America/Los_Angeles');
-    // job.start();
+    await cron.schedule("* * * * *", () => {
+      console.log("running a task every minute");
+      youtube(automationYoutubeUrl, username, password, maxSecondAdded);
+    });
 
-    res
-      .status(200)
-      .send(
-        await youtube(automationYoutubeUrl, username, password, maxSecondAdded)
-      );
+    // res
+    //   .status(200)
+    //   .send(
+    //     await youtube(automationYoutubeUrl, username, password, maxSecondAdded)
+    //   );
     //--------------------------------------------------------------------------------------
     //                                            XXXXXX
     //--------------------------------------------------------------------------------------
