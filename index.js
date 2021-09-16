@@ -42,12 +42,6 @@ const youtube = async (
     userDataDir: "./user_data2",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
-  //    const browser = await puppeteer.launch({
-  //   // headless: false,
-  //   // executablePath: await process.env.PUPPETEER_EXECUTABLE_PATH,
-  //   args: ["--no-sandbox"],
-  //   // args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  // });
   const page = await browser.newPage();
   //if incognito
   // const context = await browser.createIncognitoBrowserContext();
@@ -133,7 +127,7 @@ const youtube = async (
     // }
     // await page.waitForNavigation({ waitUntil: "networkidle2" });
   }
-  browser.close();
+  // browser.close();
   // })();
 };
 //----------------------------------------------------------------------------------------------------
