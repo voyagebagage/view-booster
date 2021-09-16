@@ -40,7 +40,7 @@ const youtube = async (
   //     ignoreHTTPSErrors: true,
   // });//
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     userDataDir: "./user_data2",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
