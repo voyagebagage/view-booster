@@ -42,7 +42,7 @@ app.get("/next-video", async (req, res) => {
     const browser = await puppeteer.launch({
       headless: false,
       userDataDir: "./user_data2",
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      // args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     //    const browser = await puppeteer.launch({
     //   // headless: false,
