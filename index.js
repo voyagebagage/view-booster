@@ -23,98 +23,98 @@ const random = (maxSecondAdded) => {
 //                                            XXXXXX
 //----------------------------------------------------------------------------------------------------
 ////
-const youtube = async (
-  automationYoutubeUrl,
-  username,
-  password,
-  maxSecondAdded
-) => {
-  //
-  const browser = await puppeteer.launch({
-    headless: true,
-    userDataDir: "./user_data2",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
-  const page = await browser.newPage();
+// const youtube = async (
+//   automationYoutubeUrl,
+//   username,
+//   password,
+//   maxSecondAdded
+// ) => {
+//   //
+//   const browser = await puppeteer.launch({
+//     headless: true,
+//     userDataDir: "./user_data2",
+//     args: ["--no-sandbox", "--disable-setuid-sandbox"],
+//   });
+//   const page = await browser.newPage();
 
-  await page.setDefaultNavigationTimeout(0);
-  await page.setDefaultTimeout(0);
-  await page.goto(automationYoutubeUrl, {
-    waitUntil: "load",
-    timeout: 0,
-  });
-  //----------------------------------------------------------------------------------------------------
-  //                                            XXXLOGIN--BUTTONXXX
-  //-----------------------------------------------------------------------------------------------------
-  // await page.waitForTimeout(1000);
-  await page.waitForXPath(
-    '//a//tp-yt-paper-button//yt-formatted-string[contains(text(),"Sign in")]'
-  );
-  let loginButton = await page.$x(
-    '//a//tp-yt-paper-button//yt-formatted-string[contains(text(),"Sign in")]'
-  );
-  await loginButton[0].click();
-  await page.waitForNavigation({ waitUntil: "networkidle2" });
-  // await page.waitForTimeout(1000);
-  await page.waitForSelector('input[name="identifier"]');
-  await page.type('input[name="identifier"]', username, { delay: 338 });
-  // //----------------------------------------------------------------------------------------------------
-  // //                                            XXXLOGINXXX
-  // //-----------------------------------------------------------------------------------------------------
-  let nextLoginButton = await page.$x(
-    '//button//span[contains(text(),"Next")]'
-  );
-  await nextLoginButton[0].click();
-  await page.waitForNavigation({ waitUntil: "networkidle2" });
-  await page.waitForTimeout(3500 + random(1));
-  await page.waitForSelector('input[name="password"]');
+//   await page.setDefaultNavigationTimeout(0);
+//   await page.setDefaultTimeout(0);
+//   await page.goto(automationYoutubeUrl, {
+//     waitUntil: "load",
+//     timeout: 0,
+//   });
+//   //----------------------------------------------------------------------------------------------------
+//   //                                            XXXLOGIN--BUTTONXXX
+//   //-----------------------------------------------------------------------------------------------------
+//   // await page.waitForTimeout(1000);
+//   await page.waitForXPath(
+//     '//a//tp-yt-paper-button//yt-formatted-string[contains(text(),"Sign in")]'
+//   );
+//   let loginButton = await page.$x(
+//     '//a//tp-yt-paper-button//yt-formatted-string[contains(text(),"Sign in")]'
+//   );
+//   await loginButton[0].click();
+//   await page.waitForNavigation({ waitUntil: "networkidle2" });
+//   // await page.waitForTimeout(1000);
+//   await page.waitForSelector('input[name="identifier"]');
+//   await page.type('input[name="identifier"]', username, { delay: 338 });
+//   // //----------------------------------------------------------------------------------------------------
+//   // //                                            XXXLOGINXXX
+//   // //-----------------------------------------------------------------------------------------------------
+//   let nextLoginButton = await page.$x(
+//     '//button//span[contains(text(),"Next")]'
+//   );
+//   await nextLoginButton[0].click();
+//   await page.waitForNavigation({ waitUntil: "networkidle2" });
+//   await page.waitForTimeout(3500 + random(1));
+//   await page.waitForSelector('input[name="password"]');
 
-  await page.type('input[name="password"]', password, { delay: 300 });
+//   await page.type('input[name="password"]', password, { delay: 300 });
 
-  // //----------------------------------------------------------------------------------------------------
-  // //                                            XXXPASSWORDXXX
-  // //-----------------------------------------------------------------------------------------------------
-  let nextPasswordButton = await page.$x(
-    '//button//span[contains(text(),"Next")]'
-  );
-  await page.waitForTimeout(1000 + random(0.3));
+//   // //----------------------------------------------------------------------------------------------------
+//   // //                                            XXXPASSWORDXXX
+//   // //-----------------------------------------------------------------------------------------------------
+//   let nextPasswordButton = await page.$x(
+//     '//button//span[contains(text(),"Next")]'
+//   );
+//   await page.waitForTimeout(1000 + random(0.3));
 
-  await nextPasswordButton[0].click();
-  await page.waitForNavigation({ waitUntil: "networkidle2" });
-  // await page.waitForTimeout(5000);
+//   await nextPasswordButton[0].click();
+//   await page.waitForNavigation({ waitUntil: "networkidle2" });
+//   // await page.waitForTimeout(5000);
 
-  //----------------------------------------------------------------------------------------------------
-  //                                            XXX-SET-UP-XXX
-  //-----------------------------------------------------------------------------------------------------
-  //await for the play button to appear to continue
-  await page.waitForXPath('//button[@title="Play (k)"]');
-  let playButton = await page.$x('//button[@title="Play (k)"]');
-  let loopPlaylistEnable = await page.$x(
-    '//button[@aria-label="Loop playlist"]'
-  );
-  let muteButton = await page.$x('//button[@aria-label="Mute (m)"]');
+//   //----------------------------------------------------------------------------------------------------
+//   //                                            XXX-SET-UP-XXX
+//   //-----------------------------------------------------------------------------------------------------
+//   //await for the play button to appear to continue
+//   await page.waitForXPath('//button[@title="Play (k)"]');
+//   let playButton = await page.$x('//button[@title="Play (k)"]');
+//   let loopPlaylistEnable = await page.$x(
+//     '//button[@aria-label="Loop playlist"]'
+//   );
+//   let muteButton = await page.$x('//button[@aria-label="Mute (m)"]');
 
-  //click loop, mute and play
-  await loopPlaylistEnable[0].click();
-  await page.waitForTimeout(200 + random(0.5));
-  await muteButton[0].click();
-  await page.waitForTimeout(100 + random(0.5));
+//   //click loop, mute and play
+//   await loopPlaylistEnable[0].click();
+//   await page.waitForTimeout(200 + random(0.5));
+//   await muteButton[0].click();
+//   await page.waitForTimeout(100 + random(0.5));
 
-  await playButton[0].click();
-  let nextButton = await page.$x('//a[@title="Next (SHIFT+n)"]');
-  let i = 0;
-  //----------------------------------------------------------------------------------------------------
-  //                                            XXX-Play FOREVER-XXX
-  //-----------------------------------------------------------------------------------------------------
-  while (true) {
-    i++;
-    await page.waitForTimeout(31000);
-    let randomVideoTime = random(maxSecondAdded);
-    console.log(randomVideoTime, i);
-    await page.waitForTimeout(randomVideoTime);
-    await nextButton[0].click();
-  }
-};
+//   await playButton[0].click();
+//   let nextButton = await page.$x('//a[@title="Next (SHIFT+n)"]');
+//   let i = 0;
+//   //----------------------------------------------------------------------------------------------------
+//   //                                            XXX-Play FOREVER-XXX
+//   //-----------------------------------------------------------------------------------------------------
+//   while (true) {
+//     i++;
+//     await page.waitForTimeout(31000);
+//     let randomVideoTime = random(maxSecondAdded);
+//     console.log(randomVideoTime, i);
+//     await page.waitForTimeout(randomVideoTime);
+//     await nextButton[0].click();
+//   }
+// };
 //----------------------------------------------------------------------------------------------------
 //                                            XXX-ROUTE-XXX
 //----------------------------------------------------------------------------------------------------
