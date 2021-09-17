@@ -1,4 +1,3 @@
-// const initialize = require("./youtube");
 // require("dotenv").config();
 const express = require("express");
 const formidable = require("express-formidable");
@@ -29,25 +28,13 @@ const youtube = async (
   password,
   maxSecondAdded
 ) => {
-  // let page;
-  // (async () => {
-  // module.exports.run = async () => {
-  // const browser = await puppeteer.launch({
-  //     args: chromium.args,
-  //     defaultViewport: chromium.defaultViewport,
-  //     executablePath: await chromium.executablePath,
-  //     headless: chromium.headless,
-  //     ignoreHTTPSErrors: true,
-  // });//
   const browser = await puppeteer.launch({
     headless: true,
     userDataDir: "./user_data2",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
-  //if incognito
-  // const context = await browser.createIncognitoBrowserContext();
-  // const page = await context.newPage();
+
   await page.setDefaultNavigationTimeout(0);
   await page.setDefaultTimeout(0);
   await page.goto(automationYoutubeUrl, {
@@ -127,16 +114,14 @@ const youtube = async (
   }
 };
 //----------------------------------------------------------------------------------------------------
-//                                            XXXXXX
+//                                            XXX-ROUTE-XXX
 //----------------------------------------------------------------------------------------------------
 app.get("/next-video", async (req, res) => {
   try {
     const { automationYoutubeUrl, username, password, maxSecondAdded } =
       req.query;
-    await cron.schedule("* * * * *", () => {
-      console.log("running a task every minute");
-      youtube(automationYoutubeUrl, username, password, maxSecondAdded);
-    });
+
+    youtube(automationYoutubeUrl, username, password, maxSecondAdded);
 
     // res
     //   .status(200)
