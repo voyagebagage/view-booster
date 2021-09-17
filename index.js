@@ -31,7 +31,7 @@ const youtube = async (
 ) => {
   const browser = await puppeteer.launch({
     headless: true,
-    userDataDir: "./user_data2",
+    userDataDir: "./user_data3",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
