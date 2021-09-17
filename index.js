@@ -29,11 +29,11 @@ const youtube = async (
   maxSecondAdded
 ) => {
   const browser = await puppeteer.launch({
-    // headless: true,
+    headless: false,
     userDataDir: "./user_data2",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
-  const page = (await browser.newPage())[0];
+  const page = await browser.newPage();
 
   await page.setDefaultNavigationTimeout(0);
   await page.setDefaultTimeout(0);
@@ -126,7 +126,7 @@ app.get("/next-video", async (req, res) => {
       .send(
         await youtube(automationYoutubeUrl, username, password, maxSecondAdded)
       );
-    //--------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
     //                                            XXXXXX
     //--------------------------------------------------------------------------------------
   } catch (error) {
