@@ -22,7 +22,7 @@ const random = (maxSecondAdded) => {
 //                                            XXXXXX
 //----------------------------------------------------------------------------------------------------
 const browserP = puppeteer.launch({
-  headless: true,
+  headless: false,
   userDataDir: "./user_data2",
   args: [
     "--no-sandbox",
