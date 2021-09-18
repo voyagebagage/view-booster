@@ -1,2 +1,3 @@
-2021/09/18-07:30:34.665 7003 Creating DB /Users/sedatif2/Documents/REACTEUR/0youtube-bot/server-side/user_data2/Default/Session Storage since it was missing.
-2021/09/18-07:30:34.799 7003 Reusing MANIFEST /Users/sedatif2/Documents/REACTEUR/0youtube-bot/server-side/user_data2/Default/Session Storage/MANIFEST-000001
+2021/09/18-07:55:15.461 ab03 Reusing MANIFEST /Users/sedatif2/Documents/REACTEUR/0youtube-bot/server-side/user_data2/Default/Session Storage/MANIFEST-000001
+2021/09/18-07:55:15.462 ab03 Recovering log #3
+2021/09/18-07:55:15.462 ab03 Reusing old log /Users/sedatif2/Documents/REACTEUR/0youtube-bot/server-side/user_data2/Default/Session Storage/000003.log 

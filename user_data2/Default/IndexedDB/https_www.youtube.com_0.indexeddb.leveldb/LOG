@@ -1,2 +1,3 @@
-2021/09/18-07:30:35.644 f00f Creating DB /Users/sedatif2/Documents/REACTEUR/0youtube-bot/server-side/user_data2/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb since it was missing.
-2021/09/18-07:30:35.721 f00f Reusing MANIFEST /Users/sedatif2/Documents/REACTEUR/0youtube-bot/server-side/user_data2/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/09/18-07:55:15.671 6903 Reusing MANIFEST /Users/sedatif2/Documents/REACTEUR/0youtube-bot/server-side/user_data2/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/09/18-07:55:15.671 6903 Recovering log #3
+2021/09/18-07:55:15.675 6903 Reusing old log /Users/sedatif2/Documents/REACTEUR/0youtube-bot/server-side/user_data2/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000003.log 
