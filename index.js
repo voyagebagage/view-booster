@@ -24,7 +24,16 @@ const random = (maxSecondAdded) => {
 const browserP = puppeteer.launch({
   headless: true,
   userDataDir: "./user_data2",
-  args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-gpu",
+    "--disable-dev-shm-usage",
+    "--disable-setuid-sandbox",
+    "--no-first-run",
+    "--no-zygote",
+    "--single-process",
+  ],
 });
 //----------------------------------------------------------------------------------------------------
 //                                            XXXXXX
